@@ -43,10 +43,41 @@ let personalMovieDB = {
 //         'logan': '8.1'
 //     }
 
-while (i > 0) {
-	let viewFilms = prompt('Один из последних просмотренных фильмов?', 'Logan');
-	let getStars = prompt('На сколько оцените его?', '8.1');
-	personalMovieDB.movies[viewFilms] = getStars;
-	i--;
+let i = 2;
+let checkInp = (qies) => {
+	if (qies != undefined && qies.length != '' && qies.length < 50) {
+		return true;
+	} return false;
+};
+
+// while (i > 0) {
+// 	const viewFilms = prompt('Один из последних просмотренных фильмов?', '');
+// 	const getStars = prompt('На сколько оцените его?', '');
+// 	if (checkInp(viewFilms) && checkInp(getStars)) {
+// 		personalMovieDB.movies[viewFilms] = getStars;
+// 		i--;
+// 	}
+// }
+// let viewFilms,
+// 	getStars;
+// do {
+// 	viewFilms = prompt('Один из последних просмотренных фильмов?', '');
+// 	getStars = prompt('На сколько оцените его?', '');
+// 	if (checkInp(viewFilms) && checkInp(getStars)) {
+// 		personalMovieDB.movies[viewFilms] = getStars;
+// 		i--;
+// 	}
+// } while (i > 0);
+
+for (let i = 0; i < 2; i++) {
+	const viewFilms = prompt('Один из последних просмотренных фильмов?', '');
+	const getStars = prompt('На сколько оцените его?', '');
+	if (checkInp(viewFilms) && checkInp(getStars)) {
+		personalMovieDB.movies[viewFilms] = getStars;
+	} else i--;
 }
-console.log(personalMovieDB);
+
+// numberOfFilms < 10 ? console.log("Просмотрено довольно мало фильмов") :
+// 	(10 < numberOfFilms && numberOfFilms < 30) ? console.log("Вы классический зритель") :
+// 		numberOfFilms > 30 ? console.log("Вы киноман!") : console.log("Произшла ошибка");
+console.log(personalMovieDB); 
