@@ -1,0 +1,55 @@
+<div class="form"><!-- оболочка формы -->
+	<form action="#" id="form" class="form__body"><!-- обявление формы -->
+		<h1 class="form__title">Отправка данных на почту</h1><!-- заголовок формы -->
+		<div class="form__item"><!-- оболочка поля формы Name -->
+			<label for="formName" class="form__label">Имя*:</label><!-- поле имени, обязательно в теге for указываем к чему будет привязано это поле -->
+			<input id="formName" type="text" name="name" class="form__input _req"><!-- полe ввода, в id казываем что связано c этим полем -->
+		</div>
+		<div class="form__item"><!-- оболочка поля формы Email -->
+			<label for="formEmail" class="form__label">E-mail*:</label><!-- поле имени, обязательно в теге for указываем к чему будет привязано это поле -->
+			<input id="formEmail" data-value="введите свой e-mail" type="text" name="email" class="form__input _email _req"><!-- полe ввода, в id казываем что связано c этим полем -->
+		</div>
+		<div class="form__item"><!-- оболочка поля формы Выбора -->
+			<div class="form__label">Выбрать Право или Лево?</div><!-- Название текс -->
+			<div class="options"> <!-- блок для радиокнопок -->
+				<div class="options__item"><!-- элемент радиокнопок -->
+					<input id="formRight" checked type="radio" name="hand" value="right" class="options__input">
+					<label for="formRight" class="options__label"><span>Право</span></label><!-- поле имени, обязательно в теге for указываем к чему будет привязано это поле -->
+				</div>
+				<div class="options__item"><!-- элемент радиокнопок -->
+					<input id="formLeft" type="radio" name="hand" value="left" class="options__input">
+					<label for="formLeft" class="options__label"><span>Лево</span></label><!-- поле имени, обязательно в теге for указываем к чему будет привязано это поле -->
+				</div>
+			</div>
+		</div>
+		<div class="form__item"><!-- оболочка поля ввода сообщений -->
+			<label for="formMessege" class="form__label">Сообщение:</label><!-- поле имени, обязательно в теге for указываем к чему будет привязано это поле -->
+			<textarea name="Messege" id="formMessege" class="form__input"></textarea>
+		</div>
+		<div class="form__item"><!-- оболочка поля выпадающего списка select -->
+			<div class="form__label">Возраст:</div>
+			<select name="age" class="form__select">
+				<option value="18-25">Молодой</option>
+				<option value="25-45" selected="selected">Старый</option>
+				<option value="45+">Супер стар</option>
+			</select>
+		</div>
+		<div class="form__item"><!-- оболочка поля добавления фотографии -->
+			<div class="form__label">Прикрепить фото:</div>
+			<div class="file">
+				<div class="file__item">
+					<input id="formImage" accept=".jpg, .jpeg, .png, .gif" type="file" name="image" data-value="" class="file__input">
+					<div class="file__button">Выбрать</div><!-- бутофорная кнопка, для возможности стилизовать стандартную кнопку -->
+				</div>
+				<div id="formPreview" class="file__preview"></div>
+			</div>
+		</div>
+		<div class="form__item"><!-- оболочка поля согласия -->
+			<div class="checkbox">
+				<input id="formAgreement" checked type="checkbox" name="agreement" data-value="" class="checkbox__input _req">
+				<label for="formAgreement" class="checkbox__label"><span>Я даю свое согласие на обработку персональных данныхв соответствии c <a href="">условиями</a>*</span></label><!-- поле имени, обязательно в теге for указываем к чему будет привязано это поле -->
+			</div>
+		</div>
+		<button type="submit" class="form__button">Отправить</button>
+	</form>
+</div>
