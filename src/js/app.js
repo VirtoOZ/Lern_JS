@@ -15,17 +15,16 @@ import './files/forms.js';
 // import './files/regular.js';
 
 //======================================================================
+let numberOfFilms;
 
-// 1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-// 'Сколько фильмов вы уже посмотрели?'
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '11');
+// запись колличества просмотренных фильмов
+function start() {
+	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+		numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '11');
+	}
+}
+// start();
 
-// 2) Создать объект personalMovieDB и в него поместить такие свойства:
-// - count - сюда передается ответ на первый вопрос
-// - movies - в это свойство поместить пустой объект
-// - actors - тоже поместить пустой объект
-// - genres - сюда поместить пустой массив
-// - privat - в это свойство поместить boolean(логическое) значение false
 let personalMovieDB = {
 	count: numberOfFilms,
 	movies: {},
@@ -34,50 +33,49 @@ let personalMovieDB = {
 	privat: false,
 };
 
-// 3) Задайте пользователю по два раза вопросы:
-//     - 'Один из последних просмотренных фильмов?'
-//     - 'На сколько оцените его?'
-// Ответы стоит поместить в отдельные переменные
-// Записать ответы в объект movies в формате: 
-//     movies: {
-//         'logan': '8.1'
-//     }
-
-let i = 2;
 let checkInp = (qies) => {
 	if (qies != undefined && qies.length != '' && qies.length < 50) {
 		return true;
 	} return false;
 };
 
-// while (i > 0) {
-// 	const viewFilms = prompt('Один из последних просмотренных фильмов?', '');
-// 	const getStars = prompt('На сколько оцените его?', '');
-// 	if (checkInp(viewFilms) && checkInp(getStars)) {
-// 		personalMovieDB.movies[viewFilms] = getStars;
-// 		i--;
-// 	}
-// }
-// let viewFilms,
-// 	getStars;
-// do {
-// 	viewFilms = prompt('Один из последних просмотренных фильмов?', '');
-// 	getStars = prompt('На сколько оцените его?', '');
-// 	if (checkInp(viewFilms) && checkInp(getStars)) {
-// 		personalMovieDB.movies[viewFilms] = getStars;
-// 		i--;
-// 	}
-// } while (i > 0);
+// заполняем основной массив фильмами и сохряняем их оценку
+function rememberMyFilms() {
 
-for (let i = 0; i < 2; i++) {
-	const viewFilms = prompt('Один из последних просмотренных фильмов?', '');
-	const getStars = prompt('На сколько оцените его?', '');
-	if (checkInp(viewFilms) && checkInp(getStars)) {
-		personalMovieDB.movies[viewFilms] = getStars;
-	} else i--;
+	let i = 2;
+	for (let i = 0; i < 2; i++) {
+		const viewFilms = prompt('Один из последних просмотренных фильмов?', '');
+		const getStars = prompt('На сколько оцените его?', '');
+		if (checkInp(viewFilms) && checkInp(getStars)) {
+			personalMovieDB.movies[viewFilms] = getStars;
+		} else i--;
+	}
 }
+// rememberMyFilms();
 
-// numberOfFilms < 10 ? console.log("Просмотрено довольно мало фильмов") :
-// 	(10 < numberOfFilms && numberOfFilms < 30) ? console.log("Вы классический зритель") :
-// 		numberOfFilms > 30 ? console.log("Вы киноман!") : console.log("Произшла ошибка");
-console.log(personalMovieDB); 
+// Определяем категорию насмотренности
+function detectPersonalLevel() {
+	numberOfFilms < 10 ? console.log("Просмотрено довольно мало фильмов") :
+		(10 < numberOfFilms && numberOfFilms < 30) ? console.log("Вы классический зритель") :
+			numberOfFilms > 30 ? console.log("Вы киноман!") : console.log("Произшла ошибка");
+}
+detectPersonalLevel();
+
+// показ объекта если дано согласие
+function showMyDB() {
+	if (!personalMovieDB.privat) {
+		return console.log(personalMovieDB);
+	}
+}
+showMyDB();
+
+function writeYouGenres() {
+	for (let i = 0; i <= 2; i++) {
+		const usrGenres = prompt(`Ваш любимый жанр под номером ${i + 1}`, 'action');
+		if (checkInp(usrGenres)) {
+			personalMovieDB.genres[i] = usrGenres;
+		} else
+			i--;
+	}
+}
+writeYouGenres();
