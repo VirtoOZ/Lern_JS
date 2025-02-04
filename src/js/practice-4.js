@@ -74,7 +74,7 @@ const personalMovieDB = {
 		for (let i = 1; i < 2; i++) {
 			const usrGenres = prompt('Введите свои любимые жанры через запятую', '');
 			personalMovieDB.checkInp(usrGenres) ?
-				personalMovieDB.genres = usrGenres.split(', ') : i--;
+				personalMovieDB.genres = usrGenres.toLowerCase().split(', ').sort() : i--;
 		}
 	},
 	toggleVisibleMyDB: function () {
